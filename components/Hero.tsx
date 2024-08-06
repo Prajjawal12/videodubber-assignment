@@ -59,7 +59,7 @@ function Hero() {
             <button
               type="button"
               data-test="get-it-button"
-              className="appearance-none outline-none border border-dashed border-gray-300 bg-white text-gray-800 rounded-md transition duration-300 ease-in-out flex items-center justify-center h-16 w-24"
+              className="appearance-none outline-none border border-solid border-gray-300 bg-white text-gray-800 rounded-md transition duration-300 ease-in-out flex items-center justify-center h-16 w-24"
               onMouseEnter={() => setDropdownVisible(true)}
               onMouseLeave={() => setDropdownVisible(false)}
             >
