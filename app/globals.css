@@ -6,3 +6,19 @@
   transform: rotate(0.1deg);
   transform-origin: center;
 }
+@keyframes flyAway {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(20px);
+  }
+  100% {
+    transform: translateY(-40px) translateX(40px);
+    opacity: 0;
+  }
+}
+
+.animate-arrow {
+  animation: flyAway 0.5s forwards;
+}

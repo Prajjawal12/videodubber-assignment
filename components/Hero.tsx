@@ -5,6 +5,16 @@ import { useState } from 'react';
 
 function Hero() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [upvoted, setUpvoted] = useState(false);
+  const [animateArrow, setAnimateArrow] = useState(false);
+
+  const handleUpvoteClick = () => {
+    setAnimateArrow(true);
+    setTimeout(() => {
+      setAnimateArrow(false);
+      setUpvoted(!upvoted);
+    }, 500); // Duration of the animation
+  };
 
   return (
     <div className="max-w-[48rem] mx-auto px-4 tilted mt-28">
@@ -125,21 +135,32 @@ function Hero() {
           <button
             type="button"
             data-test="vote-button"
-            className="flex-grow relative flex items-center justify-center h-16 transition duration-300 ease-in-out bg-white text-black rounded-md"
+            className={`flex-grow relative flex items-center justify-center h-16 transition duration-300 ease-in-out rounded-md ${
+              upvoted
+                ? 'bg-white text-black'
+                : 'bg-gradient-to-r from-orange-500 to-pink-500 text-white'
+            }`}
+            onClick={handleUpvoteClick}
           >
-            <span className="absolute inset-0 border-2 border-orange-500 rounded-md shadow-lg" />
+            <span
+              className={`absolute inset-0 border-2 ${
+                upvoted ? 'border-orange-500' : 'border-transparent'
+              } rounded-md shadow-lg`}
+            />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="12"
               height="10"
               viewBox="0 0 9 8"
-              className="mr-2 z-10"
-              fill="rgb(249,115,22)"
+              className={`mr-2 z-10 transition-transform duration-500 ${
+                animateArrow ? 'animate-arrow' : ''
+              }`}
+              fill={upvoted ? 'rgb(249,115,22)' : 'white'}
             >
               <path fillRule="evenodd" d="M9 8H0l4.5-8z"></path>
             </svg>
             <div className="font-semibold text-sm uppercase z-10">
-              Upvoted 92
+              {upvoted ? `Upvoted 92` : 'Upvote 91'}
             </div>
           </button>
         </div>
