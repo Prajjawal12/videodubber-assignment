@@ -13,9 +13,9 @@ function Hero() {
     setTimeout(() => {
       setAnimateArrow(false);
       setUpvoted(!upvoted);
-    }, 500); // Duration of the animation
+    }, 500);
   };
-
+  let currCount = 92;
   return (
     <div className="max-w-[48rem] mx-auto px-4 tilted mt-28">
       <div className="my-5 flex flex-row justify-between">
@@ -160,7 +160,7 @@ function Hero() {
               <path fillRule="evenodd" d="M9 8H0l4.5-8z"></path>
             </svg>
             <div className="font-semibold text-sm uppercase z-10">
-              {upvoted ? `Upvoted 92` : 'Upvote 91'}
+              {upvoted ? `Upvoted ${currCount}` : `Upvote ${--currCount}`}
             </div>
           </button>
         </div>
